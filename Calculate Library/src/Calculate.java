@@ -53,6 +53,28 @@ public class Calculate {
 		return (i+"/"+c);
 	}
 	
+	//return a mixed number using two integers
+	public static String toMixedNum(int a, int b) {
+		int i1 = a/b;
+		int i2 = a%b;
+		return (i1+"_"+i2+"/"+b);
+	}
+	
+	//return a quadratic equation using four integers and a String
+	public static String foil(int a, int b, int c, int d, String n) {
+		int i1 = a*c;
+		int i2 = (b*c)+(a*d);
+		int i3 = b*d;
+		return (i1+n+"^2 + "+i2+n+" + "+i3);
+	}
+	
+	//return boolean using two integers
+	public static boolean isDivisibleBy(int a, int b) {
+		int i = a/b;
+		boolean i == 9;
+		return i;
+	}
+		
 }
 
 

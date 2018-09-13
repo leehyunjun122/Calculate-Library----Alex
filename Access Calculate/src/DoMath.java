@@ -9,7 +9,8 @@ public class DoMath {
 		System.out.println(Calculate.cube(55));
 		System.out.println(Calculate.average(0,0));
 		System.out.println(Calculate.toImproperFrac(3, 1, 2));
-
+		System.out.println(Calculate.toMixedNum(3, 2));
+		System.out.println(Calculate.foil(2, 3, 6, -7, "n"));
 	}
 
 }
