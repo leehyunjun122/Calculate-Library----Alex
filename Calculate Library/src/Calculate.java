@@ -10,20 +10,20 @@ public class Calculate {
 		return answer;
 	}
 	
-	//return the cube of the input
+	//returns the cube of the input
 	public static int cube(int number) {
 		int answer;
 		answer = number*number*number;
 		return answer;
 	}
 	
-	//return the average of two doubles
+	//returns the average of two doubles
 	public static double average(double i1, double i2) {
 		double sum = i1+12;
 		return sum/2;
 	}
 	
-	//return the average of three doubles
+	//returns the average of three doubles
 	public static double average(double i1, double i2, double i3) {
 		double sum = i1+12+13;
 		return sum/3;
@@ -41,26 +41,26 @@ public class Calculate {
 		return a;
 	}
 	
-	//return a double using three doubles
+	//returns a double using three doubles
 	public static double discriminant(double a, double b, double c) {
 		double answer = (b*b)-4*a*c;
 		return answer;
 	}
 	
-	//return a improper fraction using three integers
+	//returns a improper fraction using three integers
 	public static String toImproperFrac(int a, int b, int c) {
 		int i = (a*c)+b;
 		return (i+"/"+c);
 	}
 	
-	//return a mixed number using two integers
+	//returns a mixed number using two integers
 	public static String toMixedNum(int a, int b) {
 		int i1 = a/b;
 		int i2 = a%b;
 		return (i1+"_"+i2+"/"+b);
 	}
 	
-	//return a quadratic equation using four integers and a String
+	//returns a quadratic equation using four integers and a String
 	public static String foil(int a, int b, int c, int d, String n) {
 		int i1 = a*c;
 		int i2 = (b*c)+(a*d);
@@ -68,15 +68,44 @@ public class Calculate {
 		return (i1+n+"^2 + "+i2+n+" + "+i3);
 	}
 	
-	//return boolean using two integers
+	//returns boolean using two integers
 	public static boolean isDivisibleBy(int a, int b) {
-		int i = a/b;
-		boolean i == 9;
+		boolean i=a%b==0;
 		return i;
 	}
-		
+	
+	//returns absolute value of the double
+	public static double absValue(double a) {
+		return Math.abs(a);
+	}
+	
+	//returns the largest value using to doubles
+	public static double max(double a, double b) {
+		return (Math.max(a, b));
+	}
+	
+	//returns the largest value using three doubles
+	public static double max(double a, double b, double c) {
+		return (Math.max(a, Math.max(b, c)));
+	}
+	
+	//returns the lowest value using two integers
+	public static int min(int a, int b) {
+		return (Math.min(a, b));
+	}
+	
+	//returns a double after rounding up to the 2 decimal places
+	public static double round2(double a) {
+		double answer = (double)(Math.round(a*100))/100;
+		return answer;
+	}
+	
+	//returns a double after calculating with the exponent integer
+	public static double exponent(double a, int b) {
+		double answer = Math.exp(a);
+		return answer;
+	}
 }
-
 
 
 
