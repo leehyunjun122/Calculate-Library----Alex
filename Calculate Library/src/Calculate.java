@@ -139,19 +139,7 @@ public class Calculate {
 				gcf = i;
 			}
 		return gcf;
-	}
-	
-	//Approximates the square root of double value, rounded up to two decimal places using Newton's method
-	public static double sqrt(double value) {
-		double guess;
-		double squareRoot = value/2;
-		do{
-			guess = squareRoot;
-		    squareRoot = (guess + (value/guess))/2;
-		}while ((guess - squareRoot)!=0);
-		return (Calculate.round2(squareRoot));
-	}
-	
+	}	
 }
 
 
