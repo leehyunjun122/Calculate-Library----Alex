@@ -18,27 +18,27 @@ public class Calculate {
 	}
 	
 	//returns the average of two doubles
-	public static double average(double i1, double i2) {
-		double sum = i1+12;
+	public static double average(double number1, double number2) {
+		double sum = number1+number2;
 		return sum/2;
 	}
 	
 	//returns the average of three doubles
-	public static double average(double i1, double i2, double i3) {
-		double sum = i1+12+13;
+	public static double average(double number1, double number2, double number3) {
+		double sum = number1+number2+number3;
 		return sum/3;
 	}
 	
 	//convert Radians to Degrees
-	public static double toDegrees(double i) {
-		double a = (i/3.14159)*180;
-		return a;
+	public static double toDegrees(double radian) {
+		double degree = (radian/3.14159)*180;
+		return degree;
 	}
 	
 	//convert Degrees to Radians
-	public static double toRadians(double i) {
-		double a = (i/180)*3.14159;
-		return a;
+	public static double toRadians(double degree) {
+		double radian = (degree/180)*3.14159;
+		return radian;
 	}
 	
 	//returns a double using three doubles
@@ -48,16 +48,16 @@ public class Calculate {
 	}
 	
 	//returns a improper fraction using three integers
-	public static String toImproperFrac(int a, int b, int c) {
-		int i = (a*c)+b;
-		return (i+"/"+c);
+	public static String toImproperFrac(int whole, int numerator, int denominator) {
+		int numeratorafter = (whole*denominator)+numerator;
+		return (numeratorafter+"/"+denominator);
 	}
 	
 	//returns a mixed number using two integers
-	public static String toMixedNum(int a, int b) {
-		int i1 = a/b;
-		int i2 = a%b;
-		return (i1+"_"+i2+"/"+b);
+	public static String toMixedNum(int numerator, int denominator) {
+		int whole = numerator/denominator;
+		int numeratorafter = numerator%denominator;
+		return (whole+"_"+numeratorafter+"/"+denominator);
 	}
 	
 	//returns a quadratic equation using four integers and a String
@@ -69,42 +69,89 @@ public class Calculate {
 	}
 	
 	//returns boolean using two integers
-	public static boolean isDivisibleBy(int a, int b) {
-		boolean i=a%b==0;
-		return i;
+	public static boolean isDivisibleBy(int num1, int num2) {
+		if (num1%num2==0) {
+			return true;
+		}
+		return false;
 	}
 	
 	//returns absolute value of the double
-	public static double absValue(double a) {
-		return Math.abs(a);
+	public static double absValue(double number) {
+		double answer = number;
+		if (number<0) {
+			return answer*(-1);
+		}
+		return answer;
 	}
 	
 	//returns the largest value using to doubles
-	public static double max(double a, double b) {
-		return (Math.max(a, b));
+	public static double max(double num1, double num2) {
+		return (Math.max(num1, num2));
 	}
 	
 	//returns the largest value using three doubles
-	public static double max(double a, double b, double c) {
-		return (Math.max(a, Math.max(b, c)));
+	public static double max(double num1, double num2, double num3) {
+		return (Math.max(num1, Math.max(num2, num3)));
 	}
 	
 	//returns the lowest value using two integers
-	public static int min(int a, int b) {
-		return (Math.min(a, b));
+	public static int min(int num1, int num2) {
+		return (Math.min(num1, num2));
 	}
 	
 	//returns a double after rounding up to the 2 decimal places
-	public static double round2(double a) {
-		double answer = (double)(Math.round(a*100))/100;
+	public static double round2(double decimal) {
+		double answer = (double)(Math.round(decimal*100))/100;
 		return answer;
 	}
 	
 	//returns a double after calculating with the exponent integer
-	public static double exponent(double a, int b) {
-		double answer = Math.exp(a);
+	public static double exponent(double number, int exp) {
+		double answer = Math.pow(number, exp);
 		return answer;
 	}
+	
+	//returns a factorial of an accepted integer
+	public static int factorial(int number) {
+		int outcome = 1;
+		for (int i = 2; i <= number; i++) {
+			outcome = outcome * i;
+		}	
+		return outcome;
+	}
+	
+	//Determines whether or not an integer is prime
+	public static boolean isPrime(int value) {
+		for (int i=2; i<value ; i++) {
+			if(Calculate.isDivisibleBy(value, i) == true)
+				return false;
+			}
+		return true;
+	}
+	
+	//Calculates the greatest common factor of two integers
+	public static int gcf(int num1, int num2) {
+		int gcf = 1;
+		int lowNum = Calculate.min(num1, num2);
+		for (int i=2; i<lowNum; i++) 
+			if (Calculate.isDivisibleBy(num1, i) && Calculate.isDivisibleBy(num2, i) == true) {
+				gcf = i;
+			}
+		return gcf;
+	}
+	
+	//Approximates the square root of double value, rounded up to two decimal places using Newton's method
+	public static double sqrt(double value) {
+		double guess;
+		double squareRoot = value/2;
+		do{
+			guess = squareRoot;
+		    squareRoot = (guess + (value/guess))/2;
+		}while ((guess - squareRoot)!=0);
+		return (Calculate.round2(squareRoot));
+	}
+	
 }
 
 
