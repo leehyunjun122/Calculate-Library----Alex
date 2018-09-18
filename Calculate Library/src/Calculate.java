@@ -43,7 +43,7 @@ public class Calculate {
 	
 	//returns a double using three doubles
 	public static double discriminant(double a, double b, double c) {
-		double answer = (b*b)-4*a*c;
+		double answer = (b*b)-(4*a*c);
 		return answer;
 	}
 	
@@ -76,7 +76,7 @@ public class Calculate {
 		return false;
 	}
 	
-	//returns absolute value of the double
+	//returns absolute value of the double value
 	public static double absValue(double number) {
 		double answer = number;
 		if (number<0) {
@@ -85,31 +85,69 @@ public class Calculate {
 		return answer;
 	}
 	
-	//returns the largest value using to doubles
+	//returns the largest value using two doubles
 	public static double max(double num1, double num2) {
-		return (Math.max(num1, num2));
+		if (num1<num2) {
+			double max = num2;
+			return max;
+		} else {
+			double max = num1;
+			return max;
+		}
 	}
 	
 	//returns the largest value using three doubles
 	public static double max(double num1, double num2, double num3) {
-		return (Math.max(num1, Math.max(num2, num3)));
+		if (num1>num2 && num1>num3) {
+			double max = num1;
+			return max;
+		} else {
+			if (num2>num1 && num2>num3) {
+				double max = num2;
+				return max;
+			}else {
+				double max = num3;
+				return max;
+			}
+		}
 	}
 	
 	//returns the lowest value using two integers
 	public static int min(int num1, int num2) {
-		return (Math.min(num1, num2));
+		if (num1<num2) {
+			int min = num1;
+			return min;
+		} else {
+			int min = num2;
+			return min;
+		}
 	}
 	
-	//returns a double after rounding up to the 2 decimal places
-	public static double round2(double decimal) {
-		double answer = (double)(Math.round(decimal*100))/100;
-		return answer;
+	//returns a double value after rounding up to the 2 decimal places
+	public static double round2(double value) {
+		double one = Calculate.absValue((int)(value * 100));
+		double roundup = Calculate.absValue(value);
+		if (100*roundup-one >=0.5) {
+			roundup = (int) (roundup * 100 + 1);
+			roundup = roundup/100;
+		} else {
+			roundup = (int) (roundup * 100);
+			roundup = roundup/100;
+		}
+		if (value<=0){
+			roundup = roundup * -1;
+		}
+		return roundup;
 	}
 	
 	//returns a double after calculating with the exponent integer
-	public static double exponent(double number, int exp) {
-		double answer = Math.pow(number, exp);
-		return answer;
+	public static double exponent(double base, int exp) {
+		int numofmultiplying = exp;
+		double x = 1;
+		for (int i = 0; i < numofmultiplying; i++) {
+			x = x * base;
+		}
+		return x;
 	}
 	
 	//returns a factorial of an accepted integer
@@ -124,9 +162,10 @@ public class Calculate {
 	//Determines whether or not an integer is prime
 	public static boolean isPrime(int value) {
 		for (int i=2; i<value ; i++) {
-			if(Calculate.isDivisibleBy(value, i) == true)
+			if(Calculate.isDivisibleBy(value, i) == true) {
 				return false;
 			}
+		}
 		return true;
 	}
 	
@@ -134,12 +173,12 @@ public class Calculate {
 	public static int gcf(int num1, int num2) {
 		int gcf = 1;
 		int lowNum = Calculate.min(num1, num2);
-		for (int i=2; i<lowNum; i++) 
+		for (int i=2; i<lowNum; i++)
 			if (Calculate.isDivisibleBy(num1, i) && Calculate.isDivisibleBy(num2, i) == true) {
 				gcf = i;
 			}
 		return gcf;
-	}	
+	}
 }
 
 
