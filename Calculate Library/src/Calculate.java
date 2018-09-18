@@ -179,6 +179,8 @@ public class Calculate {
 			}
 		return gcf;
 	}
+	
+	
 }
 
 
