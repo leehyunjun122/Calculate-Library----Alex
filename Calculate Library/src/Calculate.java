@@ -180,7 +180,13 @@ public class Calculate {
 		return gcf;
 	}
 	
-	
+	public static double sqrt(double value) {
+		double squareRoot = 1.00;
+		while (Calculate.exponent((squareRoot + (value/squareRoot))/2, 2) != value) {
+			squareRoot++;
+		}
+		return (Calculate.round2(squareRoot));
+	}
 }
 
 
