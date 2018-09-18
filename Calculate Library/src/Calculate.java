@@ -144,6 +144,9 @@ public class Calculate {
 	public static double exponent(double base, int exp) {
 		int numofmultiplying = exp;
 		double x = 1;
+		if (exp<0) {
+			throw new IllegalArgumentException ("no negative number used for this code");
+		}
 		for (int i = 0; i < numofmultiplying; i++) {
 			x = x * base;
 		}
@@ -153,6 +156,9 @@ public class Calculate {
 	//returns a factorial of an accepted integer
 	public static int factorial(int number) {
 		int outcome = 1;
+		if (number<0) {
+			throw new IllegalArgumentException ("factorial can't be used for negative number");
+		}
 		for (int i = 2; i <= number; i++) {
 			outcome = outcome * i;
 		}	
@@ -180,12 +186,34 @@ public class Calculate {
 		return gcf;
 	}
 	
+	//approximates the square root of the value passed
 	public static double sqrt(double value) {
 		double squareRoot = 1.00;
+		if (value<0) {
+			throw new IllegalArgumentException ("no negative value inside of the square root");
+		}
 		while (Calculate.exponent((squareRoot + (value/squareRoot))/2, 2) != value) {
 			squareRoot++;
 		}
 		return (Calculate.round2(squareRoot));
+	}
+	
+	//approximates the real roots using the quadratic formula
+	public static String quadForm (int num1, int num2, int num3) {
+		int a = num1;
+		int b = num2;
+		int c = num3;
+		double root1;
+		double root2;
+		if ((-4*a*c)>=0) {
+			double outcome = (Calculate.discriminant(a, b*-1, c))/2;
+			double root1 = (Calculate.round2(outcome));
+		} else {
+			if ((-4*a*c)<0) {
+				throw new IllegalArgumentException ("negative number in the -4ac doesn't give real roots");
+			}
+		}
+		return ("\""+root1+"and"+root2+"\"");
 	}
 }
 
