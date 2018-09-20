@@ -22,7 +22,7 @@ public class DoMath {
 		System.out.println(Calculate.min(2, 3));
 		System.out.println(Calculate.round2(2.35628562));
 		System.out.println(Calculate.exponent(13.0, 2));
-		System.out.println(Calculate.sqrt(2));
+		System.out.println(Calculate.sqrt(5857));
 	}
 
 }

@@ -78,11 +78,10 @@ public class Calculate {
 	
 	//returns absolute value of the double value
 	public static double absValue(double number) {
-		double answer = number;
 		if (number<0) {
-			return answer*(-1);
+			return number*(-1);
 		}
-		return answer;
+		return number;
 	}
 	
 	//returns the largest value using two doubles
@@ -192,10 +191,10 @@ public class Calculate {
 		if (value<0) {
 			throw new IllegalArgumentException ("no negative value inside of the square root");
 		}
-		while (Calculate.exponent((squareRoot + (value/squareRoot))/2, 2) != value) {
+		while ((int)Calculate.exponent((squareRoot + (value/squareRoot))/2, 2) != value) {
 			squareRoot++;
 		}
-		return (Calculate.round2(squareRoot));
+		return squareRoot;
 	}
 	
 	//approximates the real roots using the quadratic formula
