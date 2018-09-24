@@ -187,15 +187,19 @@ public class Calculate {
 	
 	//approximates the square root of the value passed
 	public static double sqrt(double value) {
-		double squareRoot = 1.00;
+		double guess;
+		double squareRoot = value/2;
 		if (value<0) {
-			throw new IllegalArgumentException ("no negative value inside of the square root");
+			throw new IllegalArgumentException ("no negative value for the square root");
+		} else {
+		for (int i=0; i<=value; i++) {
+			guess = squareRoot;
+			squareRoot = (guess + (value/guess))/2;
 		}
-		while ((int)Calculate.exponent((squareRoot + (value/squareRoot))/2, 2) != value) {
-			squareRoot++;
 		}
-		return squareRoot;
+		return (Calculate.round2(squareRoot));
 	}
+
 	
 	//approximates the real roots using the quadratic formula
 	public static String quadForm (int num1, int num2, int num3) {
