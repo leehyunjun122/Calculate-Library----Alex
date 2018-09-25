@@ -43,18 +43,24 @@ public class Calculate {
 	
 	//returns a value of discriminant using three double values of coefficients of quadratic equation
 	public static double discriminant(double a, double b, double c) {
-		double answer = (b*b)-(4*a*c);//the formula for the discriminant is b^2 - 4ac
-		return answer;
+		double discriminant = (b*b)-(4*a*c);//the formula for the discriminant is b^2 - 4ac
+		return discriminant;
 	}
 	
 	//returns a improper fraction using three integers
 	public static String toImproperFrac(int whole, int numerator, int denominator) {
+		if (denominator==0) {
+			throw new IllegalArgumentException ("zero can't be denominator");
+		}
 		int numeratorAfter = (whole*denominator)+numerator;//calculating the numerator of the improper fraction
 		return (numeratorAfter+"/"+denominator);
 	}
 	
 	//returns a mixed number using two integers
 	public static String toMixedNum(int numerator, int denominator) {
+		if (denominator==0) {
+			throw new IllegalArgumentException ("zero can't be denominator");
+		}
 		int whole = numerator/denominator;
 		int remainder = numerator%denominator;//remainder is the new numerator of the mixed fraction
 		return (whole+"_"+remainder+"/"+denominator);
@@ -69,8 +75,11 @@ public class Calculate {
 	}
 	
 	//Determines whether or not one integer is evenly divisible by another integer
-	public static boolean isDivisibleBy(int num1, int num2) {
-		if (num1%num2==0) {//if the remainder is 0, it completely divides
+	public static boolean isDivisibleBy(int number, int factor) {
+		if (factor==0) {
+			throw new IllegalArgumentException ("number can't be divided by zero");
+		}
+		if (number%factor==0) {//if the remainder is 0, it completely divides
 			return true;
 		}
 		return false;
@@ -121,6 +130,17 @@ public class Calculate {
 			return min;
 		}
 	}
+	
+	//returns the lowest value using two doubles
+		public static double min(double num1, double num2) {
+			if (num1<num2) {
+				double min = num1;
+				return min;
+			} else {
+				double min = num2;
+				return min;
+			}
+		}
 	
 	//rounds the double value up to the 2 decimal places
 	public static double round2(double value) {
@@ -199,26 +219,38 @@ public class Calculate {
 		}
 		return (Calculate.round2(squareRoot));
 	}
-
 	
 	//approximates the real roots using the quadratic formula
-	public static String quadForm (int num1, int num2, int num3) {
-		int a = num1;
-		int b = num2;
-		int c = num3;
-		double root1;
-		double root2;
-		if ((-4*a*c)>=0) {
-			double outcome = (Calculate.discriminant(a, b*-1, c))/2;
-			double root1 = (Calculate.round2(outcome));
-		} else {
-			if ((-4*a*c)<0) {
-				throw new IllegalArgumentException ("negative number in the -4ac doesn't give real roots");
+		public static String quadForm (int a, int b, int c) {
+			double root1;
+			double root2;
+			int sqrtOfDiscriminant = (-4*a*c);
+			if (sqrtOfDiscriminant<0) {
+				return ("no real roots");
+			} else if (sqrtOfDiscriminant>=0) {
+				double outcome = ((-1*b)-(Calculate.discriminant(a, b, c)))/2*a;
+				if (outcome<0) {
+					double rootA = (Calculate.round2(Calculate.absValue(outcome)))*-1;
+				} else {
+					double rootA = (Calculate.round2(outcome));
+				}
+				root1 = rootA;
 			}
+			if (sqrtOfDiscriminant>=0) {
+				double answer = ((-1*b)+(Calculate.discriminant(a, b, c)))/2*a;
+				if (answer<0) {
+					double rootB = (Calculate.round2(Calculate.absValue(answer)))*-1;
+				} else {
+				double rootB = (Calculate.round2(answer));
+				}
+				root2 = rootB;
+			}
+			double lowRoot = Calculate.min(root1, root2);
+			double maxRoot = Calculate.max(root1, root2);
+			return ("\""+lowRoot+" and "+maxRoot+"\"");
 		}
-		return ("\""+root1+"and"+root2+"\"");
-	}
 }
+
 
 
 
