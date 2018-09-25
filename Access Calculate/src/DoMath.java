@@ -18,7 +18,7 @@ public class DoMath {
 		System.out.println(Calculate.isDivisibleBy(3, 2));
 		System.out.println(Calculate.absValue(-1000.0));
 		System.out.println(Calculate.max(9.0, 3.0));
-		System.out.println(Calculate.max(2.0, 6.0, 4.0));
+		System.out.println(Calculate.max(0.0, 0.0, -2.0));
 		System.out.println(Calculate.min(2, 3));
 		System.out.println(Calculate.round2(2.35628562));
 		System.out.println(Calculate.exponent(13.0, 2));

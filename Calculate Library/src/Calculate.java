@@ -41,36 +41,36 @@ public class Calculate {
 		return radian;
 	}
 	
-	//returns a double using three doubles
+	//returns a value of discriminant using three double values of coefficients of quadratic equation
 	public static double discriminant(double a, double b, double c) {
-		double answer = (b*b)-(4*a*c);
+		double answer = (b*b)-(4*a*c);//the formula for the discriminant is b^2 - 4ac
 		return answer;
 	}
 	
 	//returns a improper fraction using three integers
 	public static String toImproperFrac(int whole, int numerator, int denominator) {
-		int numeratorafter = (whole*denominator)+numerator;
-		return (numeratorafter+"/"+denominator);
+		int numeratorAfter = (whole*denominator)+numerator;//calculating the numerator of the improper fraction
+		return (numeratorAfter+"/"+denominator);
 	}
 	
 	//returns a mixed number using two integers
 	public static String toMixedNum(int numerator, int denominator) {
 		int whole = numerator/denominator;
-		int numeratorafter = numerator%denominator;
-		return (whole+"_"+numeratorafter+"/"+denominator);
+		int remainder = numerator%denominator;//remainder is the new numerator of the mixed fraction
+		return (whole+"_"+remainder+"/"+denominator);
 	}
 	
-	//returns a quadratic equation using four integers and a String
+	//returns a quadratic form by converting a binomial multiplication of form (ax+b)(cx+d)
 	public static String foil(int a, int b, int c, int d, String n) {
-		int i1 = a*c;
-		int i2 = (b*c)+(a*d);
-		int i3 = b*d;
-		return (i1+n+"^2 + "+i2+n+" + "+i3);
+		int coefficientX2 = a*c;//coefficient of x^2
+		int coefficientX = (b*c)+(a*d);//coefficient of x
+		int constant = b*d;//constant value
+		return (coefficientX2+n+"^2 + "+coefficientX+n+" + "+constant);
 	}
 	
-	//returns boolean using two integers
+	//Determines whether or not one integer is evenly divisible by another integer
 	public static boolean isDivisibleBy(int num1, int num2) {
-		if (num1%num2==0) {
+		if (num1%num2==0) {//if the remainder is 0, it completely divides
 			return true;
 		}
 		return false;
@@ -79,7 +79,7 @@ public class Calculate {
 	//returns absolute value of the double value
 	public static double absValue(double number) {
 		if (number<0) {
-			return number*(-1);
+			return number*(-1);//converting the negative value to positive
 		}
 		return number;
 	}
@@ -97,15 +97,15 @@ public class Calculate {
 	
 	//returns the largest value using three doubles
 	public static double max(double num1, double num2, double num3) {
-		if (num1>num2 && num1>num3) {
+		if (num1>=num2 && num1>=num3) {//if the 1st number is the biggest
 			double max = num1;
 			return max;
 		} else {
-			if (num2>num1 && num2>num3) {
+			if (num2>=num1 && num2>=num3) {//if the 2nd number is the biggest
 				double max = num2;
 				return max;
 			}else {
-				double max = num3;
+				double max = num3;//if the 3rd number is the biggest
 				return max;
 			}
 		}
@@ -122,31 +122,31 @@ public class Calculate {
 		}
 	}
 	
-	//returns a double value after rounding up to the 2 decimal places
+	//rounds the double value up to the 2 decimal places
 	public static double round2(double value) {
-		double one = Calculate.absValue((int)(value * 100));
-		double roundup = Calculate.absValue(value);
-		if (100*roundup-one >=0.5) {
-			roundup = (int) (roundup * 100 + 1);
-			roundup = roundup/100;
+		double wholeNum = Calculate.absValue((int)(value * 100));//absolute value of input*100 that includes two decimal place values
+		double roundUp = Calculate.absValue(value);//absolute value of the input
+		if (100*roundUp-wholeNum >=0.5) {//if greater than 0.5, it means that the 3rd decimal would be rounded up to 0.01
+			roundUp = (int) (roundUp * 100 + 1);
+			roundUp = roundUp/100;
 		} else {
-			roundup = (int) (roundup * 100);
-			roundup = roundup/100;
+			roundUp = (int) (roundUp * 100);
+			roundUp = roundUp/100;
 		}
 		if (value<=0){
-			roundup = roundup * -1;
+			roundUp = roundUp * -1;//if the input was negative, convert the roundup to negative value
 		}
-		return roundup;
+		return roundUp;
 	}
 	
 	//returns a double after calculating with the exponent integer
 	public static double exponent(double base, int exp) {
-		int numofmultiplying = exp;
+		int numOfMultiplying = exp;
 		double x = 1;
 		if (exp<0) {
 			throw new IllegalArgumentException ("no negative number used for this code");
 		}
-		for (int i = 0; i < numofmultiplying; i++) {
+		for (int i = 0; i < numOfMultiplying; i++) {
 			x = x * base;
 		}
 		return x;
