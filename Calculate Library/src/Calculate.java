@@ -224,34 +224,31 @@ public class Calculate {
 	}
 	
 	//approximates the real roots using the quadratic formula
-		public static String quadForm (int a, int b, int c) {
-			double root1;
-			double root2;
-			int sqrtOfDiscriminant = (-4*a*c);
-			if (sqrtOfDiscriminant<0) {
-				return ("no real roots");
-			} else if (sqrtOfDiscriminant>=0) {
-				double outcome = ((-1*b)-(Calculate.discriminant(a, b, c)))/2*a;
-				if (outcome<0) {
-					double rootA = (Calculate.round2(Calculate.absValue(outcome)))*-1;
-				} else {
-					double rootA = (Calculate.round2(outcome));
-				}
-				root1 = rootA;
-			}
-			if (sqrtOfDiscriminant>=0) {
-				double answer = ((-1*b)+(Calculate.discriminant(a, b, c)))/2*a;
-				if (answer<0) {
-					double rootB = (Calculate.round2(Calculate.absValue(answer)))*-1;
-				} else {
-				double rootB = (Calculate.round2(answer));
-				}
-				root2 = rootB;
-			}
-			double lowRoot = Calculate.min(root1, root2);
-			double maxRoot = Calculate.max(root1, root2);
+	public static String quadForm (int a, int b, int c) {
+		double root1;
+		double root2;
+		double onlyRoot;
+		double rootA;
+		double rootB;
+		double maxRoot;
+		double lowRoot;
+		double sqrtOfDiscriminant = Calculate.discriminant(a, b, c);
+		if (sqrtOfDiscriminant<0) {
+			return ("no real roots");
+		} else if (sqrtOfDiscriminant==0) {//if the discriminant is equal to zero, there is only one real root
+			onlyRoot = Calculate.round2((-b/(2*a)));
+			return onlyRoot+"";
+		}
+		else {//if the discriminant is greater than zero, there is two real roots
+			rootA = Calculate.round2(((-1*b)-(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
+			root1 = rootA;
+			rootB = (Calculate.round2((-1*b)+(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
+			root2 = rootB;
+			lowRoot = Calculate.min(root1, root2);
+			maxRoot = Calculate.max(root1, root2);
 			return ("\""+lowRoot+" and "+maxRoot+"\"");
 		}
+	}
 }
 
 
