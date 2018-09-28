@@ -63,6 +63,9 @@ public class Calculate {
 		}
 		int whole = numerator/denominator;
 		int remainder = numerator%denominator;//remainder is the new numerator of the mixed fraction
+		if (whole<0) {
+			return (whole+"");
+		}
 		return (whole+"_"+remainder+"/"+denominator);
 	}
 	
@@ -94,50 +97,50 @@ public class Calculate {
 	}
 	
 	//returns the largest value using two doubles
-	public static double max(double num1, double num2) {
-		if (num1<num2) {
-			double max = num2;
+	public static double max(double number1, double number2) {
+		if (number1<number2) {
+			double max = number2;
 			return max;
 		} else {
-			double max = num1;
+			double max = number1;
 			return max;
 		}
 	}
 	
 	//returns the largest value using three doubles
-	public static double max(double num1, double num2, double num3) {
-		if (num1>=num2 && num1>=num3) {//if the 1st number is the biggest
-			double max = num1;
+	public static double max(double number1, double number2, double number3) {
+		if (number1>=number2 && number1>=number3) {//if the 1st number is the biggest
+			double max = number1;
 			return max;
 		} else {
-			if (num2>=num1 && num2>=num3) {//if the 2nd number is the biggest
-				double max = num2;
+			if (number2>=number1 && number2>=number3) {//if the 2nd number is the biggest
+				double max = number2;
 				return max;
 			}else {
-				double max = num3;//if the 3rd number is the biggest
+				double max = number3;//if the 3rd number is the biggest
 				return max;
 			}
 		}
 	}
 	
 	//returns the lowest value using two integers
-	public static int min(int num1, int num2) {
-		if (num1<num2) {
-			int min = num1;
+	public static int min(int number1, int number2) {
+		if (number1<number2) {
+			int min = number1;
 			return min;
 		} else {
-			int min = num2;
+			int min = number2;
 			return min;
 		}
 	}
 	
 	//returns the lowest value using two doubles
-		public static double min(double num1, double num2) {
-			if (num1<num2) {
-				double min = num1;
+		public static double min(double number1, double number2) {
+			if (number1<number2) {
+				double min = number1;
 				return min;
 			} else {
-				double min = num2;
+				double min = number2;
 				return min;
 			}
 		}
@@ -195,11 +198,11 @@ public class Calculate {
 	}
 	
 	//Calculates the greatest common factor of two integers
-	public static int gcf(int num1, int num2) {
+	public static int gcf(int number1, int number2) {
 		int gcf = 1;
-		int lowNum = Calculate.min(num1, num2);
+		int lowNum = Calculate.min(number1, number2);
 		for (int i=2; i<lowNum; i++)
-			if (Calculate.isDivisibleBy(num1, i) && Calculate.isDivisibleBy(num2, i) == true) {
+			if (Calculate.isDivisibleBy(number1, i) && Calculate.isDivisibleBy(number2, i) == true) {
 				gcf = i;
 			}
 		return gcf;
