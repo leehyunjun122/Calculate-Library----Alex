@@ -246,7 +246,7 @@ public class Calculate {
 			root2 = rootB;
 			lowRoot = Calculate.min(root1, root2);
 			maxRoot = Calculate.max(root1, root2);
-			return ("\""+lowRoot+" and "+maxRoot+"\"");
+			return ("\""+lowRoot+" and "+maxRoot+"\"");//the lowest value comes first
 		}
 	}
 }
