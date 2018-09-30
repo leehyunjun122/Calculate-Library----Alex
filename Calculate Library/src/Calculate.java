@@ -63,8 +63,12 @@ public class Calculate {
 		}
 		int whole = numerator/denominator;
 		int remainder = numerator%denominator;//remainder is the new numerator of the mixed fraction
-		if (whole<0) {
+		if (remainder==0) {
 			return (whole+"");
+		}
+		if (remainder<0) {//fraction only needs one negative sign to show that the number is negative
+			remainder = remainder*-1;
+			return (whole+"_"+remainder+"/"+denominator);
 		}
 		return (whole+"_"+remainder+"/"+denominator);
 	}
@@ -163,13 +167,13 @@ public class Calculate {
 	}
 	
 	//returns a double after calculating with the exponent integer
-	public static double exponent(double base, int exp) {
-		int numOfMultiplying = exp;
+	public static double exponent(double base, int power) {
+		int numOfMultiplying = power;
 		double x = 1;
-		if (exp<0) {
+		if (power<0) {
 			throw new IllegalArgumentException ("no negative number used for this code");
 		}
-		for (int i = 0; i < numOfMultiplying; i++) {
+		for (int i = 0; i < numOfMultiplying; i++) {//multiplying the base as many times as the power
 			x = x * base;
 		}
 		return x;
