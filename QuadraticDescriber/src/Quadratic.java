@@ -2,7 +2,7 @@
  * @author Alex Lee
  * @versions October 2, 2018
  */
-import java.util.*;
+
 public class Quadratic {
 	//returns the square of the input
 	public static int square(int number) {
@@ -18,10 +18,10 @@ public class Quadratic {
 	}
 	
 	//returns a quadratic form by converting a binomial multiplication of form (ax+b)(cx+d)
-	public static String foil(int a, int b, int c, int d, String n) {
-		int coefficientX2 = a*c;//coefficient of x^2
-		int coefficientX = (b*c)+(a*d);//coefficient of x
-		int constant = b*d;//constant value
+	public static String foil(double a, double b, double c, double d, String n) {
+		double coefficientX2 = a*c;//coefficient of x^2
+		double coefficientX = (b*c)+(a*d);//coefficient of x
+		double constant = b*d;//constant value
 		return (coefficientX2+n+"^2 + "+coefficientX+n+" + "+constant);
 	}
 	
