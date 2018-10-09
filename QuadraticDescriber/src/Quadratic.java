@@ -4,6 +4,12 @@
  */
 
 public class Quadratic {
+	//describes the quadratic using the three double coefficient values passed
+	public static String quadrDescriber(double a, double b, double c) {
+		
+		return ("how are you");//returns concave, axis of symmetry, vertex, x and y intercept
+	}
+	
 	//returns the square of the input
 	public static int square(int number) {
 		int answer;

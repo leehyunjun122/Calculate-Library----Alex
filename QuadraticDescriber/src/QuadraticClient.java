@@ -21,7 +21,13 @@ public class QuadraticClient {
 		System.out.println("Description of the graph of:");
 		System.out.println("y = "+a+" x^2 + "+b+" x + "+c);
 		System.out.println();
-		System.out.println("Opens: ");
+		System.out.println(Quadratic.quadrDescriber(a, b, c));
+		System.out.println();
+		System.out.println("Do you want to keep going? (Type \"quit\" to end)");
+		String keepGoing = input.next();
+		if (keepGoing!="quit") {
+			input.reset();
+		}
 	}
 }
 
