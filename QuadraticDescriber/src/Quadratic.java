@@ -5,16 +5,55 @@
 
 public class Quadratic {
 	//describes the quadratic using the three double coefficient values passed
-	public static String quadrDescriber(double a, double b, double c) {
-		
-		return ("how are you");//returns concave, axis of symmetry, vertex, x and y intercept
-	}
-	
-	//returns the square of the input
-	public static int square(int number) {
-		int answer;
-		answer = number*number;
-		return answer;
+	public static String quadrDescriber (double a, double b, double c) {
+		if (a == 0) {//if a is 0, it's a linear equation.
+			throw new IllegalArgumentException("This equation is not quadratic");
+		}
+		double vertexX = -1 * b/(2 * a);
+		if (vertexX==-0.0) {
+			vertexX = 0.0;
+		}
+		double axisOfSym = round2(vertexX);//axis of symmetry is same as the x-coordinate of vertex
+		double vertexY = a * vertexX * vertexX + b * vertexX + c;//substituting x of the equation as x-coordinate of vertex 
+		if (vertexY==-0.0) {
+			vertexY = 0.0;
+		}
+		String vertex = "(" + round2(vertexX) + ", " + round2(vertexY) + ")";//rounds up the values of vertex
+		double interceptY = round2(c);//in standard form, only c remains when the x is 0
+		if (interceptY==-0.0) {
+			interceptY = 0.0;
+		}
+		String root = "";
+		double discriminant = Quadratic.discriminant(a, b, c);
+		if (discriminant < 0) {//if discriminant is less than 0, it has no real root
+			root = "No roots";
+		}else {
+			if (discriminant == 0) {//if discriminant = 0, it has only one real root
+				double onlyRoot =  round2((-b/(2*a)));
+				root = "" + onlyRoot;
+			}else {
+				double firstRoot =  round2(((-b + Quadratic.sqrt(discriminant))/(2*a)));//using quadratic formula (+)
+				double secondRoot =  round2(((-b - Quadratic.sqrt(discriminant))/(2*a)));//using quadratic formula (-)
+				if (firstRoot==-0.0) {
+					firstRoot = 0.0;
+				}
+				if (secondRoot==-0.0) {
+					secondRoot = 0.0;
+				}
+				if (firstRoot < secondRoot){
+					root = firstRoot + " and " + secondRoot;
+				}else {
+					root = secondRoot + " and " + firstRoot;
+				}
+			}
+		}
+		String concave = "";//if the graph opens upward or downward
+		if (a < 0){
+			concave = "Down";
+		} else {
+			concave = "Up";
+		}
+		return "Description of the graph of:" + "\ny = " + a + " x^2 +" + b + " x +" + c + "\n\nOpens: " + concave + "\nAxis of Symmetry: " + axisOfSym + "\nVertex: " + vertex + "\nx-intercept(s): " + root + "\ny-intercept: " + interceptY;
 	}
 	
 	//returns a value of discriminant using three double values of coefficients of quadratic equation
@@ -23,42 +62,12 @@ public class Quadratic {
 		return discriminant;
 	}
 	
-	//returns a quadratic form by converting a binomial multiplication of form (ax+b)(cx+d)
-	public static String foil(double a, double b, double c, double d, String n) {
-		double coefficientX2 = a*c;//coefficient of x^2
-		double coefficientX = (b*c)+(a*d);//coefficient of x
-		double constant = b*d;//constant value
-		return (coefficientX2+n+"^2 + "+coefficientX+n+" + "+constant);
-	}
-	
 	//returns absolute value of the double value
 	public static double absValue(double number) {
 		if (number<0) {
 			return number*(-1);//converting the negative value to positive
 		}
 		return number;
-	}
-	
-	//returns the lowest value using two doubles
-	public static double min(double number1, double number2) {
-		if (number1<number2) {
-			double min = number1;
-			return min;
-		} else {
-			double min = number2;
-			return min;
-		}
-	}
-			
-	//returns the largest value using two doubles
-	public static double max(double number1, double number2) {
-		if (number1<number2) {
-			double max = number2;
-			return max;
-		} else {
-			double max = number1;
-			return max;
-		}
 	}
 	
 	//rounds the double value up to the 2 decimal places
@@ -78,19 +87,6 @@ public class Quadratic {
 		return roundUp;
 	}
 	
-	//returns a double after calculating with the exponent integer
-	public static double exponent(double base, int power) {
-		int numOfMultiplying = power;
-		double x = 1;
-		if (power<0) {
-			throw new IllegalArgumentException ("no negative number used for this code");
-		}
-		for (int i = 0; i < numOfMultiplying; i++) {//multiplying the base as many times as the power
-			x = x * base;
-		}
-		return x;
-	}
-	
 	//approximates the square root of the value passed
 	public static double sqrt(double value) {
 		double guess;
@@ -104,33 +100,6 @@ public class Quadratic {
 		}
 		}
 		return (Quadratic.round2(squareRoot));
-	}
-	
-	//approximates the real roots using the quadratic formula
-	public static String quadForm (int a, int b, int c) {
-		double root1;
-		double root2;
-		double onlyRoot;
-		double rootA;
-		double rootB;
-		double maxRoot;
-		double lowRoot;
-		double sqrtOfDiscriminant = Quadratic.discriminant(a, b, c);
-		if (sqrtOfDiscriminant<0) {
-			return ("no real roots");
-		} else if (sqrtOfDiscriminant==0) {//if the discriminant is equal to zero, there is only one real root
-			onlyRoot = Quadratic.round2((-b/(2*a)));
-			return onlyRoot+"";
-		}
-		else {//if the discriminant is greater than zero, there is two real roots
-			rootA = Quadratic.round2(((-1*b)-(Quadratic.sqrt(sqrtOfDiscriminant)))/2*a);
-			root1 = rootA;
-			rootB = (Quadratic.round2((-1*b)+(Quadratic.sqrt(sqrtOfDiscriminant)))/2*a);
-			root2 = rootB;
-			lowRoot = Quadratic.min(root1, root2);
-			maxRoot = Quadratic.max(root1, root2);
-			return ("\""+lowRoot+" and "+maxRoot+"\"");//the lowest value comes first
-		}
 	}
 }
 

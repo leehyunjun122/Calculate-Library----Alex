@@ -8,26 +8,29 @@ import java.util.Scanner;
 public class QuadraticClient {
 	static Scanner input = new Scanner(System.in);
 	public static void main(String[] args) {
+		boolean done = false;
 		System.out.println("Welcome to the Quadratic Describer");
 		System.out.println("created by Alex Lee");
-		System.out.println("Provide values for coefficients a, b, and c");
-		System.out.print("a: ");
-		double a = input.nextDouble();
-		System.out.print("b: ");
-		double b = input.nextDouble();
-		System.out.print("c: ");
-		double c = input.nextDouble();
-		System.out.println();
-		System.out.println("Description of the graph of:");
-		System.out.println("y = "+a+" x^2 + "+b+" x + "+c);
-		System.out.println();
-		System.out.println(Quadratic.quadrDescriber(a, b, c));
-		System.out.println();
-		System.out.println("Do you want to keep going? (Type \"quit\" to end)");
-		String keepGoing = input.next();
-		if (keepGoing!="quit") {
-			input.reset();
+		System.out.print("Provide values for coefficients a, b, and c");
+		while (!done) {
+			System.out.print("\na: ");
+			double a = input.nextDouble();
+			System.out.print("b: ");
+			double b = input.nextDouble();
+			System.out.print("c: ");
+			double c = input.nextDouble();
+			System.out.println();
+			System.out.println(Quadratic.quadrDescriber(a, b, c));
+			System.out.println();
+			System.out.println("Do you want to keep going? (Type \"quit\" to end)");
+			input.nextLine();// Consume newline left-over
+			String answer = input.nextLine();
+			String answer1 = answer.replaceAll("\\s","");//remove spaces
+			if (answer1.toLowerCase().contains("quit")) {//if the input contains the word "quit" regardless of the caps
+				done = true;
+			}
 		}
+		input.close();
 	}
 }
 
