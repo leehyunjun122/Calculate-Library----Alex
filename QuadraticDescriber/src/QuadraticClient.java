@@ -25,7 +25,7 @@ public class QuadraticClient {
 			System.out.println("Do you want to keep going? (Type \"quit\" to end)");
 			input.nextLine();// Consume newline left-over
 			String answer = input.nextLine();
-			String result = answer.replaceAll("\\s","");//remove spaces
+			String result = answer.replaceAll("\\s","");//removing spaces
 			if (result.toLowerCase().contains("quit")) {//if the input contains the word "quit" regardless of the caps 
 				done = true;
 			}
