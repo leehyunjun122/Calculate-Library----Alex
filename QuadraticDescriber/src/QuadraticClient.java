@@ -26,7 +26,7 @@ public class QuadraticClient {
 			input.nextLine();// Consume newline left-over
 			String answer = input.nextLine();
 			String result = answer.replaceAll("\\s","");//remove spaces
-			if (result.toLowerCase().contains("quit")) {//if the input contains the word "quit" regardless of the caps
+			if (result.toLowerCase().contains("quit")) {//if the input contains the word "quit" regardless of the caps 
 				done = true;
 			}
 		}
