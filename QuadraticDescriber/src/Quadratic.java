@@ -9,20 +9,11 @@ public class Quadratic {
 		if (a == 0) {//if a is 0, it's a linear equation.
 			throw new IllegalArgumentException("This equation is not quadratic");
 		}
-		double vertexX = -1 * b/(2 * a);
-		if (vertexX==-0.0) {
-			vertexX = 0.0;
-		}
+		double vertexX = -b/(2 * a);
 		double axisOfSym = round2(vertexX);//axis of symmetry is same as the x-coordinate of vertex
 		double vertexY = a * vertexX * vertexX + b * vertexX + c;//substituting x of the equation as x-coordinate of vertex 
-		if (vertexY==-0.0) {
-			vertexY = 0.0;
-		}
 		String vertex = "(" + round2(vertexX) + ", " + round2(vertexY) + ")";//rounds up the values of vertex
 		double interceptY = round2(c);//in standard form, only c remains when the x is 0
-		if (interceptY==-0.0) {
-			interceptY = 0.0;
-		}
 		String root = "";
 		double discriminant = Quadratic.discriminant(a, b, c);
 		if (discriminant < 0) {//if discriminant is less than 0, it has no real root
@@ -34,12 +25,6 @@ public class Quadratic {
 			}else {
 				double firstRoot =  round2(((-b + Quadratic.sqrt(discriminant))/(2*a)));//using quadratic formula (+)
 				double secondRoot =  round2(((-b - Quadratic.sqrt(discriminant))/(2*a)));//using quadratic formula (-)
-				if (firstRoot==-0.0) {
-					firstRoot = 0.0;
-				}
-				if (secondRoot==-0.0) {
-					secondRoot = 0.0;
-				}
 				if (firstRoot < secondRoot){
 					root = firstRoot + " and " + secondRoot;
 				}else {
@@ -81,7 +66,7 @@ public class Quadratic {
 			roundUp = (int) (roundUp * 100);
 			roundUp = roundUp/100;
 		}
-		if (value<=0){
+		if (value<0){
 		roundUp = roundUp * -1;//if the input was negative, convert the roundup to negative value
 		}
 		return roundUp;

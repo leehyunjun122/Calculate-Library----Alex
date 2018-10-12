@@ -160,7 +160,7 @@ public class Calculate {
 			roundUp = (int) (roundUp * 100);
 			roundUp = roundUp/100;
 		}
-		if (value<=0){
+		if (value<0){
 			roundUp = roundUp * -1;//if the input was negative, convert the roundup to negative value
 		}
 		return roundUp;
