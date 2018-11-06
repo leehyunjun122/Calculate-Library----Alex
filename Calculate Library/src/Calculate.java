@@ -234,20 +234,15 @@ public class Calculate {
 	public static String quadForm (int a, int b, int c) {
 		double root1;
 		double root2;
-		double rootA;
-		double rootB;
 		double sqrtOfDiscriminant = Calculate.discriminant(a, b, c);
 		if (sqrtOfDiscriminant<0) {
 			return ("no real roots");
 		} else if (sqrtOfDiscriminant==0) {//if the discriminant is equal to zero, there is only one real root
 			double onlyRoot = Calculate.round2((-b/(2*a)));
 			return onlyRoot+"";
-		}
-		else {//if the discriminant is greater than zero, there is two real roots
-			rootA = Calculate.round2(((-1*b)-(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
-			root1 = rootA;
-			rootB = (Calculate.round2((-1*b)+(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
-			root2 = rootB;
+		} else {//if the discriminant is greater than zero, there is two real roots
+			root1 = Calculate.round2(((-1*b)-(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
+			root2 = Calculate.round2(((-1*b)+(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
 			double lowRoot = Calculate.min(root1, root2);
 			double maxRoot = Calculate.max(root1, root2);
 			return ("\""+lowRoot+" and "+maxRoot+"\"");//the lowest value comes first
