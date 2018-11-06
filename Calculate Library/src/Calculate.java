@@ -205,7 +205,7 @@ public class Calculate {
 	public static int gcf(int number1, int number2) {
 		int gcf = 1;
 		int lowNum = Calculate.min(number1, number2);
-		for (int i=2; i<lowNum; i++)
+		for (int i=2; i<=lowNum; i++)
 			if (Calculate.isDivisibleBy(number1, i) && Calculate.isDivisibleBy(number2, i) == true) {
 				gcf = i;
 			}
@@ -224,6 +224,9 @@ public class Calculate {
 			squareRoot = (guess + (value/guess))/2;
 		}
 		}
+		if(value==1) {
+			return (value);
+		}
 		return (Calculate.round2(squareRoot));
 	}
 	
@@ -231,16 +234,13 @@ public class Calculate {
 	public static String quadForm (int a, int b, int c) {
 		double root1;
 		double root2;
-		double onlyRoot;
 		double rootA;
 		double rootB;
-		double maxRoot;
-		double lowRoot;
 		double sqrtOfDiscriminant = Calculate.discriminant(a, b, c);
 		if (sqrtOfDiscriminant<0) {
 			return ("no real roots");
 		} else if (sqrtOfDiscriminant==0) {//if the discriminant is equal to zero, there is only one real root
-			onlyRoot = Calculate.round2((-b/(2*a)));
+			double onlyRoot = Calculate.round2((-b/(2*a)));
 			return onlyRoot+"";
 		}
 		else {//if the discriminant is greater than zero, there is two real roots
@@ -248,8 +248,8 @@ public class Calculate {
 			root1 = rootA;
 			rootB = (Calculate.round2((-1*b)+(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
 			root2 = rootB;
-			lowRoot = Calculate.min(root1, root2);
-			maxRoot = Calculate.max(root1, root2);
+			double lowRoot = Calculate.min(root1, root2);
+			double maxRoot = Calculate.max(root1, root2);
 			return ("\""+lowRoot+" and "+maxRoot+"\"");//the lowest value comes first
 		}
 	}

@@ -22,8 +22,9 @@ public class DoMath {
 		System.out.println(Calculate.min(2, 3));
 		System.out.println(Calculate.round2(0));
 		System.out.println(Calculate.exponent(13.0, 0));
-		System.out.println(Calculate.sqrt(57689));
-		System.out.println(Calculate.quadForm(1, -6, 9));
+		System.out.println(Calculate.sqrt(1));
+		System.out.println(Calculate.quadForm(-1, 0, 0));
+		System.out.println(Calculate.gcf(13,169));
 	}
 
 }
