@@ -149,7 +149,7 @@ public class Calculate {
 			}
 		}
 	
-	//rounds the double value up to the 2 decimal places
+	//rounds the double value up to the 2 sdecimal places
 	public static double round2(double value) {
 		double wholeNum = Calculate.absValue((int)(value * 100));//absolute value of input*100 that includes two decimal place values
 		double roundUp = Calculate.absValue(value);//absolute value of the input
@@ -231,9 +231,7 @@ public class Calculate {
 	}
 	
 	//approximates the real roots using the quadratic formula
-	public static String quadForm (int a, int b, int c) {
-		double root1;
-		double root2;
+	public static String quadForm(int a, int b, int c) {
 		double sqrtOfDiscriminant = Calculate.discriminant(a, b, c);
 		if (sqrtOfDiscriminant<0) {
 			return ("no real roots");
@@ -241,15 +239,14 @@ public class Calculate {
 			double onlyRoot = Calculate.round2((-b/(2*a)));
 			return onlyRoot+"";
 		} else {//if the discriminant is greater than zero, there is two real roots
-			root1 = Calculate.round2(((-1*b)-(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
-			root2 = Calculate.round2(((-1*b)+(Calculate.sqrt(sqrtOfDiscriminant)))/2*a);
+			double root1 = Calculate.round2((-b + Calculate.sqrt(sqrtOfDiscriminant))/(2*a));
+			double root2 = Calculate.round2((-b - Calculate.sqrt(sqrtOfDiscriminant))/(2*a));
 			double lowRoot = Calculate.min(root1, root2);
 			double maxRoot = Calculate.max(root1, root2);
 			return ("\""+lowRoot+" and "+maxRoot+"\"");//the lowest value comes first
 		}
 	}
 }
-
 
 
 
