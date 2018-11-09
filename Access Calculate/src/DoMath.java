@@ -23,7 +23,7 @@ public class DoMath {
 		System.out.println(Calculate.round2(0));
 		System.out.println(Calculate.exponent(13.0, 0));
 		System.out.println(Calculate.sqrt(1));
-		System.out.println(Calculate.quadForm(-1, 0, 0));
+		System.out.println(Calculate.quadForm(-8, 4, 4));
 		System.out.println(Calculate.gcf(13,169));
 	}
 
